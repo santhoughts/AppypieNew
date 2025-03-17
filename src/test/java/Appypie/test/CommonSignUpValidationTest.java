@@ -15,17 +15,27 @@ public class CommonSignUpValidationTest extends BaseTest {
     // validate common signup functionality By using Email & Password
     @Test(dataProvider = "signUpDataProvider")
     public void validateCommonSignupWithEmailPassword(HashMap<String, String> input) throws IOException {
+
+        // for launch the application
         LandingPage landingPage = launchApplication();
+
+        // move to signup page to enter email and password
         SignUpPage signUpPage = landingPage.goToSignUpPage();
         signUpPage.signUpWithValidData(input.get("email"), input.get("password"));
+
+        // Get window handle and move to different tab to extract the otp form the yopmail
         WindowHandleUtil handleUtil = new WindowHandleUtil(driver);
         String childHandle = handleUtil.openNewTabAndGetHandle();
         handleUtil.switchToWindow(childHandle);
+
+        // create instance of yopmail page & call the getOTP method to extract the otp from the yopmail page
         YopmailPage yopmailPage = new YopmailPage(driver);
         String OTP = yopmailPage.getOTPFromYopmail(input.get("emailPrefix"));
         String[] handles = handleUtil.windowHandle();
         String parentWindowID = handles[0];
         String retrieveChildWindowID = handles[1];
+
+        // after extracting otp move to the parent window
         handleUtil.switchToWindow(parentWindowID);
         OTP_VerificationPage otpVerificationPage = new OTP_VerificationPage(driver);
         HomePage homePage = otpVerificationPage.enterVerificationCode(OTP);

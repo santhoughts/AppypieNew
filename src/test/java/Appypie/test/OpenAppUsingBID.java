@@ -43,13 +43,29 @@ public class OpenAppUsingBID extends BaseTest {
     @Test(dependsOnMethods = "openApp", dataProvider = "featureName")
     public void addFeatureInApp(HashMap<String, String> Input) throws InterruptedException {
         EditorHomePage editorHomePage = new EditorHomePage(driver);
-        editorHomePage.addFeature(Input.get("featureName"));
+        editorHomePage.addFeature(Input.get("featureName"), Input.get("featureNameInList"));
+         String addedFeature = editorHomePage.listOfAddedFeatureName();
+         Assert.assertEquals(addedFeature,"Form Builder");
+
     }
 
+    // Provide feature name for the test
     @DataProvider
     public Object[][] featureName() throws IOException {
         return getDataByIndices("SignUp&LoginCredentials.json", 4);
 
+
+    }
+
+    // Verify the added feature, if not then add the feature and open the feature
+    @Test(dependsOnMethods = "openApp", dataProvider = "featureName")
+    public void openAddedFeature(HashMap<String, String> Input)
+    {
+        // create instance
+        EditorHomePage editorHomePage = new EditorHomePage(driver);
+
+        // open added feature, if not then add and open the app
+        editorHomePage.openAnyAddedFeature(Input.get("featureName"),Input.get("addedfeatureName"), Input.get("featureNameInList"));
 
     }
 }

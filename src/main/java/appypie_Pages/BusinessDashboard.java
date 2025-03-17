@@ -65,8 +65,8 @@ public class BusinessDashboard extends Base_Class {
         searchByBusinessNameAndBID.sendKeys(Keys.ENTER);
         waitForElementToBeVisible(manageAppButton, 10).click();
         waitForElementToBeDisappear(loaderImage, 20);
-        Thread.sleep(3000);
-        waitForElementToBeClickable(editButton, 20).click();
+        Thread.sleep(5000);
+        editButton.click();
         waitForElementToBeDisappear(loaderImage, 20);
         EditorHomePage homePage = new EditorHomePage(driver);
 

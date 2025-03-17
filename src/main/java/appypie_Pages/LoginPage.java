@@ -59,7 +59,7 @@ public class LoginPage extends Base_Class {
 
 
 
-    // Login with valida credentials
+    // Login with valid credentials
     public HomePage loginWithValidCredentials(String loginEmail, String loginPassword) throws InterruptedException {
         inputFieldForLoginEmailAndNumber.sendKeys(loginEmail);
         waitForElementToBeVisible(inputFieldForLoginPassword, 10).sendKeys(loginPassword);
@@ -113,6 +113,12 @@ public class LoginPage extends Base_Class {
     public void clearEmailField()
     {
         waitForElementToBeVisible(inputFieldForLoginEmailAndNumber,10).clear();
+    }
+
+    // Login With Email OTP
+    public void loginWithEmailOTP(String loginEmail)
+    {
+        inputFieldForLoginEmailAndNumber.sendKeys(loginEmail);
     }
 
 

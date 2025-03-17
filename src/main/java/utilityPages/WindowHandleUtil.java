@@ -56,7 +56,7 @@ public class WindowHandleUtil {
             driver.switchTo().window(handle);
         }
 
-    // Retrive both child and parent tab ID
+    // Retrieve both child and parent tab ID
     public String[] windowHandle() {
         Set<String> handles = driver.getWindowHandles();
         Iterator<String> it = handles.iterator();

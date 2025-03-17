@@ -23,7 +23,7 @@ public class CommonLoginValidationTest extends BaseTest {
 
     }
 
-    // provide data for login
+    // Data provide for login through json
     @DataProvider
     public Object[][] loginDataProvider() throws IOException {
         return getDataByIndices("SignUp&LoginCredentials.json", 1);
@@ -48,7 +48,7 @@ public class CommonLoginValidationTest extends BaseTest {
         Assert.assertEquals(actualHomePageTitle, "Personal Information | Appy Pie", "Homepage title not match");
     }
 
-    // provide data for login
+    // Data provide for login with google
     @DataProvider
     public Object[][] googleLoginCredentials() throws IOException {
         return getDataByIndices("SignUp&LoginCredentials.json", 3);
@@ -81,6 +81,13 @@ public class CommonLoginValidationTest extends BaseTest {
             e.printStackTrace();
             assert false : "Unexpected error occurred: " + e.getMessage();
         }
+
+    }
+
+    // Verify login with email OTP
+    @Test
+    public void verifyLoginWithOTPEmail()
+    {
 
     }
 
