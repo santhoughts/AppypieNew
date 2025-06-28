@@ -97,7 +97,7 @@ public class SignUpPage extends Base_Class {
     }
 
     // Method to view the password
-    public String[] verifyHideAndUnhidePasswor(String email, String password)
+    public String[] verifyHideAndUnhidePassword(String email, String password)
     {
         // get the attribute value and verify
         waitForElementToBeVisible(signupEmailAddress,10).sendKeys(email);

@@ -48,7 +48,7 @@ public class CommonLoginValidationTest extends BaseTest {
         Assert.assertEquals(actualHomePageTitle, "Personal Information | Appy Pie", "Homepage title not match");
     }
 
-    // Data provide for login with google
+    // Data provide for login with Google
     @DataProvider
     public Object[][] googleLoginCredentials() throws IOException {
         return getDataByIndices("SignUp&LoginCredentials.json", 3);

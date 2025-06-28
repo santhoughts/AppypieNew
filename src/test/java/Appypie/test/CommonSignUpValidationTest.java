@@ -82,7 +82,7 @@ public class CommonSignUpValidationTest extends BaseTest {
     public void validateOTPVerificationRequiredErrorMessage() throws IOException {
 
         OTP_VerificationPage otpVerificationPage = new OTP_VerificationPage(driver);
-        LandingPage landingPage = launchApplication();
+        LandingPage landingPage = new LandingPage(driver);
         SignUpPage signUpPage = landingPage.goToSignUpPage();
         try {
 
@@ -116,9 +116,9 @@ public class CommonSignUpValidationTest extends BaseTest {
         LandingPage landingPage = launchApplication();
         SignUpPage signUpPage = landingPage.goToSignUpPage();
         try {
-            String[] inputType = signUpPage.verifyHideAndUnhidePasswor("san@yopmail.com", "Test@123");
-            Assert.assertEquals(inputType[0], "password");
-            Assert.assertEquals(inputType[1], "text");
+            String[] inputType = signUpPage.verifyHideAndUnhidePassword("san@yopmail.com", "Test@123");
+            Assert.assertEquals(inputType[0], "password", "Initial password field type should be 'password'");
+            Assert.assertEquals(inputType[1], "text", "After clicking, password field type should be 'text'");
         } catch (Exception e) {
             e.printStackTrace();
             assert false : "Unexpected erro occured" + e.getMessage();
